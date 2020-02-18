@@ -1,11 +1,16 @@
 import React from "react";
+
 const Greetings = props => (
   <h4 className="bg-primary text-white text-center p-2">
-    Hallo Selamat belajar {props.name}. Umur Kamu sekarang{props.age}, Gender
-    Kamu{props.gender}
+    Hallo Happy Listening {props.name} <br /> Age Kamu sekarang {props.age}{" "}
+    Tahun
+    <br />
+    Gender Kamu {props.gender}
   </h4>
 );
 Greetings.defaultProps = {
-  name: "User"
+  name: "User",
+  age: "20",
+  gender: "Pria"
 };
 export default Greetings;

@@ -1,15 +1,20 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 // import Hello from "./components/hello";
 // import Clock from "./components/clock";
 import Greeting from "./components/greetings";
-import { Container } from "reactstrap";
+import Userprofile from "./components/userprofile";
+import { Container, Col, Row } from "reactstrap";
 function App() {
   return (
+    //
+
     <div>
-      {/* <Hello name="FAL" asalkota="Bandung" /> */}
-      <Greeting name="FAL" age="10" gender="Pria" />
+      <div>
+        <p>Nomor 1</p>
+        <Greeting name="FAL" age="23" gender="Pria" />
+      </div>
+      <Userprofile />
     </div>
 
     // <div className="App">
