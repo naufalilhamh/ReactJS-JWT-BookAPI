@@ -5,16 +5,21 @@ import "./App.css";
 import Greeting from "./components/greetings";
 import Userprofile from "./components/userprofile";
 import { Container, Col, Row } from "reactstrap";
+import UsingHook from "./components/usinghook";
+import Example from "./components/usinghook2";
 function App() {
   return (
     //
 
     <div>
       <div>
-        <p>Nomor 1</p>
-        <Greeting name="FAL" age="23" gender="Pria" />
+        <center>
+          <Greeting name="OFAL" age="23" gender="Pria" />
+        </center>
       </div>
       <Userprofile />
+      {/* <UsingHook />
+      <Example /> */}
     </div>
 
     // <div className="App">
