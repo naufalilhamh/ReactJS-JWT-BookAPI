@@ -22,7 +22,9 @@ code {
   color: grey;
   font-size: 18px;
 }
-
+footer {
+  flex-shrink: none;
+}
 button {
   border: none;
   outline: 0;
