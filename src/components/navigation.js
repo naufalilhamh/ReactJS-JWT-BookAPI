@@ -7,11 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from "reactstrap";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +41,16 @@ const Navigation = () => {
           <NavItem>
             <NavLink to="/multihandling" tag={RRNavLink}>
               Multi Handling
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/validasi" tag={RRNavLink}>
+              Validasi Form
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/challenge-validasi" tag={RRNavLink}>
+              Challenge Validasi Form
             </NavLink>
           </NavItem>
           {/* <UncontrolledDropdown nav inNavbar>

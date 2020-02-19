@@ -2,9 +2,8 @@ import React from "react";
 import "../App.css";
 // import Hello from "./components/hello";
 // import Clock from "./components/clock";
-import Greeting from "./greetings";
+// import Greeting from "./greetings";
 import Userprofile from "./userprofile";
-import { Container, Col, Row } from "reactstrap";
 
 function Profile() {
   return (

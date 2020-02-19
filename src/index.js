@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import About from "./components/about";
 import Notfound from "./components/notfound";
+import Validasi from "./components/challenge-validasi";
+import Form from "./validasi/FormHook";
 import MultiHandling from "./components/multihandling";
 import Handling from "./components/handling";
 import Main from "./layouts/main";
@@ -24,6 +25,8 @@ const routing = (
           <Route path="/about" component={About} />
           <Route path="/handling" component={Handling} />
           <Route path="/multihandling" component={MultiHandling} />
+          <Route path="/validasi" component={Form} />
+          <Route path="/challenge-validasi" component={Validasi} />
           <Route component={Notfound} />
         </Switch>
       </Main>

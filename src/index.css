@@ -17,10 +17,15 @@ code {
   margin: auto;
   text-align: center;
 }
-
+.cardregis {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
 .title {
   color: grey;
-  font-size: 18px;
+  font-size: 30px;
 }
 footer {
   flex-shrink: none;

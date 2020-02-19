@@ -1,7 +1,6 @@
 import Avatar from "./avatar";
 import Username from "./username";
 import Bio from "./bio";
-import { Container } from "reactstrap";
 import React, { Component } from "react";
 
 export default class Userprofile extends Component {

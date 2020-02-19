@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Spinner, Toast, ToastBody, ToastHeader } from "reactstrap";
+import { Jumbotron } from "reactstrap";
 class About extends React.Component {
   render = () => (
     <Jumbotron>
