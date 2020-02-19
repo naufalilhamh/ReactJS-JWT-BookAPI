@@ -19,7 +19,7 @@ export default class Userprofile extends Component {
           <h3>
             <Username Username="Joker Sujoker" />
           </h3>
-          <p className="title">
+          <p>
             <Bio />
           </p>
           <button>Liat Selengkapnya!</button>

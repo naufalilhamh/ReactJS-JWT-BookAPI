@@ -14,7 +14,7 @@ const Navigation = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href={"/"}>NAIL APP</NavbarBrand>
+      <NavbarBrand href={"/"}>Kota Bandung</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>

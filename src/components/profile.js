@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 // import Hello from "./components/hello";
 // import Clock from "./components/clock";
-// import Greeting from "./greetings";
+import Greeting from "./greetings";
 import Userprofile from "./userprofile";
 
 function Profile() {
@@ -10,6 +10,7 @@ function Profile() {
     //
 
     <div Col="mb-10">
+      <Greeting name="nail" />
       <Userprofile />
       {/* <Counter /> */}
     </div>
