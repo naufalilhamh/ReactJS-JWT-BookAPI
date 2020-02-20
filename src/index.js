@@ -10,6 +10,7 @@ import About from "./components/about";
 import Notfound from "./components/notfound";
 import Validasi from "./components/challenge-validasi";
 import Form from "./validasi/FormHook";
+import Axios from "./components/axios";
 import MultiHandling from "./components/multihandling";
 import Handling from "./components/handling";
 import Main from "./layouts/main";
@@ -27,6 +28,7 @@ const routing = (
           <Route path="/multihandling" component={MultiHandling} />
           <Route path="/validasi" component={Form} />
           <Route path="/challenge-validasi" component={Validasi} />
+          <Route path="/axios1" component={Axios} />
           <Route component={Notfound} />
         </Switch>
       </Main>

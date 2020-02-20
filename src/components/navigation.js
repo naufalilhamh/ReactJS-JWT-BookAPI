@@ -53,6 +53,11 @@ const Navigation = () => {
               Challenge Validasi Form
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/axios1" tag={RRNavLink}>
+              Axios
+            </NavLink>
+          </NavItem>
           {/* <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Options
