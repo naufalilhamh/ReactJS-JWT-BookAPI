@@ -15,9 +15,9 @@ const Inputan = () => {
       <div className="cardregis">
         <div className="title">Register Form</div>
         <hr />
-        <form onSubmit={e => e.preventDefault()}>
+        <form className="px-2" onSubmit={e => e.preventDefault()}>
           <div className="form-group">
-            <Label>Name Lengkap</Label>
+            <Label>Name</Label>
             <input
               className="form-control"
               type="text"
@@ -60,8 +60,8 @@ const Inputan = () => {
               ref={register({
                 required: "Harus Diisi",
                 minLength: {
-                  value: 5,
-                  message: "Kurang Dari 5 Karakter"
+                  value: 8,
+                  message: "Kurang Dari 8 Karakter"
                 }
               })}
             />

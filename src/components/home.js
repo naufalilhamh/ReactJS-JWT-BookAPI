@@ -5,7 +5,7 @@ const Home = () => {
     <Jumbotron>
       <h1 className="display-3">Hello, Selamat Datang!</h1>
       <p className="lead">
-        <strong>Westrongsite ini menjelaskan singkat Kota bandung</strong>
+        <strong>Website ini menjelaskan singkat Kota bandung</strong>
         <br />
         Kota Bandung tidak berdiri bersamaan dengan pembentukan Kabupaten
         Bandung. Kota itu dibangun dengan tenggang waktu sangat jauh setelah
@@ -14,7 +14,7 @@ const Home = () => {
         Wiraangunangun. Beliau memerintah Kabupaten bandung hingga tahun 1681.
       </p>
       <hr className="my-2" />
-      <div className="p-3 my-2 rounded">
+      {/* <div className="p-3 my-2 rounded">
         <Toast>
           <ToastHeader>Ingat !</ToastHeader>
           <ToastBody>
@@ -23,7 +23,7 @@ const Home = () => {
             </span>
           </ToastBody>
         </Toast>
-      </div>
+      </div> */}
     </Jumbotron>
   );
 };

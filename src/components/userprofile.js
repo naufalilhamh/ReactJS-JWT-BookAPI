@@ -17,7 +17,8 @@ export default class Userprofile extends Component {
             <Avatar />
           </center>
           <h3>
-            <Username Username="Joker Sujoker" />
+            <Username />
+            {/* Username="Joker Sujoker" */}
           </h3>
           <p>
             <Bio />

@@ -10,7 +10,7 @@ function Profile() {
     //
 
     <div Col="mb-10">
-      <Greeting name="nail" />
+      {/* <Greeting name="nail" /> */}
       <Userprofile />
       {/* <Counter /> */}
     </div>

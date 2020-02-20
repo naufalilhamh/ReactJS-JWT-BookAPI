@@ -1,7 +1,7 @@
 import React from "react";
 const Bio = props => (
   <p>
-    Riwayat Sekolah :<br /> SD -> SMP -> SMK -> UNIKOM
+    Riwayat :<br /> SD -> SMP -> SMK -> Kuliah -> Gubernur
   </p>
 );
 
