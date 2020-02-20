@@ -1,19 +1,18 @@
 import React from "react";
-import { Jumbotron, Spinner, Toast, ToastBody, ToastHeader } from "reactstrap";
+import Logo from "./buku.jpeg";
+import { Jumbotron } from "reactstrap";
 const Home = () => {
   return (
     <Jumbotron>
-      <h1 className="display-3">Hello, Selamat Datang!</h1>
+      <h2>
+        Hello, Selamat Datang! <br /> Kadang Membaca Bisa Membuatmu Pintar{" "}
+      </h2>
+      <font>*tergantung apa yang dibaca</font>
       <p className="lead">
-        <strong>Website ini menjelaskan singkat Kota bandung</strong>
-        <br />
-        Kota Bandung tidak berdiri bersamaan dengan pembentukan Kabupaten
-        Bandung. Kota itu dibangun dengan tenggang waktu sangat jauh setelah
-        Kabupaten Bandung berdiri. Kabupaten Bandung dibentuk pada sekitar
-        pertengahan abad ke-17 Masehi, dengan Bupati pertama tumenggung
-        Wiraangunangun. Beliau memerintah Kabupaten bandung hingga tahun 1681.
+        <div>
+          <img src={Logo} width="1000px" height="300px" />
+        </div>
       </p>
-      <hr className="my-2" />
       {/* <div className="p-3 my-2 rounded">
         <Toast>
           <ToastHeader>Ingat !</ToastHeader>

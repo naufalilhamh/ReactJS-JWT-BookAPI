@@ -14,50 +14,31 @@ const Navigation = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href={"/"}>Kota Bandung</NavbarBrand>
+      <NavbarBrand href={"/"}>Perpustakaan</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink to="/home" tag={RRNavLink}>
-              Home
+            <NavLink to="/daftarbuku" tag={RRNavLink}>
+              Daftar Buku
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/profile" tag={RRNavLink}>
-              Profile
+            <NavLink to="/tambahbuku" tag={RRNavLink}>
+              Tambah Buku
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/about" tag={RRNavLink}>
-              About
+            <NavLink to="/caribuku" tag={RRNavLink}>
+              Cari Buku
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/handling" tag={RRNavLink}>
-              Handling
+            <NavLink to="/updatebuku" tag={RRNavLink}>
+              Update Buku
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink to="/multihandling" tag={RRNavLink}>
-              Multi Handling
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/validasi" tag={RRNavLink}>
-              Validasi Form
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/challenge-validasi" tag={RRNavLink}>
-              Challenge Validasi Form
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/axios1" tag={RRNavLink}>
-              Axios
-            </NavLink>
-          </NavItem>
+
           {/* <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Options

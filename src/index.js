@@ -5,15 +5,16 @@ import * as serviceWorker from "./serviceWorker";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/home";
-import Profile from "./components/profile";
-import About from "./components/about";
-import Notfound from "./components/notfound";
-import Validasi from "./components/challenge-validasi";
-import Form from "./validasi/FormHook";
-import Axios from "./components/axios";
-import MultiHandling from "./components/multihandling";
-import Handling from "./components/handling";
 import Main from "./layouts/main";
+import DaftarBuku from "./components/axios";
+import TambahBuku from "./components/tambahbuku";
+import Notfound from "./components/notfound";
+// import Profile from "./components/profile";
+// import About from "./components/about";
+// import Validasi from "./components/challenge-validasi";
+// import Form from "./validasi/FormHook";
+// import MultiHandling from "./components/multihandling";
+// import Handling from "./components/handling";
 
 const routing = (
   <Router>
@@ -21,14 +22,8 @@ const routing = (
       <Main>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/about" component={About} />
-          <Route path="/handling" component={Handling} />
-          <Route path="/multihandling" component={MultiHandling} />
-          <Route path="/validasi" component={Form} />
-          <Route path="/challenge-validasi" component={Validasi} />
-          <Route path="/axios1" component={Axios} />
+          <Route path="/daftarbuku" component={DaftarBuku} />
+          <Route path="/tambahbuku" component={TambahBuku} />
           <Route component={Notfound} />
         </Switch>
       </Main>
