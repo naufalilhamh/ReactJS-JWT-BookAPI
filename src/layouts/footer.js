@@ -5,7 +5,7 @@ const Footer = props => {
   return (
     <>
       <footer className="py-4 bg-light text-black-10 ">
-        <div class="container text-center ">
+        <div className="container text-center ">
           <strong>Copyright &copy; Your Website</strong>
         </div>
       </footer>

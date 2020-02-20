@@ -15,7 +15,7 @@ const Inputan = () => {
       <div className="cardregis">
         <div className="title">Register Form</div>
         <hr />
-        <form className="px-2" onSubmit={e => e.preventDefault()}>
+        <form className="px-5" onSubmit={e => e.preventDefault()}>
           <div className="form-group">
             <Label>Name</Label>
             <input
