@@ -9,6 +9,7 @@ import Main from "./layouts/main";
 import DaftarBuku from "./components/axios";
 import TambahBuku from "./components/tambahbuku";
 import Notfound from "./components/notfound";
+import Updatebuku from "./components/ubahbuku";
 // import Profile from "./components/profile";
 // import About from "./components/about";
 // import Validasi from "./components/challenge-validasi";
@@ -24,6 +25,7 @@ const routing = (
           <Route exact path="/" component={Home} />
           <Route path="/daftarbuku" component={DaftarBuku} />
           <Route path="/tambahbuku" component={TambahBuku} />
+          <Route path="/updatebuku/:id" component={Updatebuku} />
           <Route component={Notfound} />
         </Switch>
       </Main>

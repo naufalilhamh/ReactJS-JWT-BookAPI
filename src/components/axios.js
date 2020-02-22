@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import { Form } from "reactstrap";
 
 // function App() {
 //   const [data, setData] = useState([]);
@@ -13,17 +15,22 @@ import axios from "axios";
 //   }, []);
 function App() {
   const url = "http://localhost:3000/books";
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ data: [] });
 
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
 
+  function onDelete(id) {
+    axios.delete(`http://localhost:3000/books/${id}`).then(alert("Terhapus"));
+    window.location.reload(false);
+  }
+
   const renderTable = () => {
-    return data.map(books => {
+    return data.data.map(books => {
       return (
-        <tr key={books._id}>
-          <td>{books._id}</td>
+        <tr key={books.id}>
+          <td>{books.id}</td>
           <td>{books.title}</td>
           <td>{books.author}</td>
           <td>{books.published_date}</td>
@@ -31,16 +38,23 @@ function App() {
           <td>{books.language}</td>
           <td>{books.publisher_id}</td>
           <td>
+            <Link to={"/updatebuku/" + books.id}>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm mt-1"
+                width="10px"
+              >
+                <i className="fa fa-gear"></i>
+                Edit
+              </button>
+            </Link>
+
             <button
               type="button"
-              className="btn btn-secondary btn-sm mt-1"
-              width="10px"
+              className="btn btn-danger  btn-sm mt-1"
+              onClick={() => onDelete(books.id)}
             >
-              <i class="fa fa-gear"></i>
-              Edit
-            </button>
-            <button type="button" className="btn btn-danger  btn-sm mt-1">
-              <i class="fa fa-trash"></i>
+              <i className="fa fa-trash"></i>
               Hapus
             </button>
           </td>
