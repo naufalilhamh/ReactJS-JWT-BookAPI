@@ -6,27 +6,25 @@ export default class UbahBuku extends Component {
     super(props);
 
     this.state = {
-      error: "",
-      data: [
-        {
-          id: "",
-          title: "",
-          author: "",
-          published_date: "",
-          pages: "",
-          language: "",
-          publisher_id: "",
-          createdAt: "",
-          updatedAt: ""
-        }
-      ]
+      data: {
+        id: "",
+        title: "",
+        author: "",
+        published_date: "",
+        page: "",
+        language: "",
+        publisher_id: "",
+        createdAt: "",
+        updatedAt: ""
+      }
     };
   }
 
   componentDidMount = async () => {
     const id = this.props.match.params.id;
-    const res = await axios.get("http://localhost:3000/books/" + id);
-    this.setState(res.data.data[0]);
+    const res = await axios.get("http://localhost:6767/books/" + id);
+    console.log(res.data.data);
+    this.setState(res.data.data);
   };
 
   ambilPerubahan = e => {
@@ -41,7 +39,7 @@ export default class UbahBuku extends Component {
 
     e.preventDefault();
 
-    await axios.put("http://localhost:3000/books/" + id, this.state);
+    await axios.put("http://localhost:6767/books/" + id, this.state);
     alert("Update Buku Berhasil");
     this.props.history.push("/daftarbuku");
   };
@@ -75,12 +73,12 @@ export default class UbahBuku extends Component {
               </div>
 
               <div className="form-group">
-                <label>Pages</label>
+                <label>Page</label>
                 <input
-                  name="pages"
+                  name="page"
                   className="form-control"
                   type="number"
-                  value={this.state.pages}
+                  value={this.state.page}
                   onChange={this.ambilPerubahan}
                 />
               </div>

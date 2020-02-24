@@ -10,6 +10,8 @@ import DaftarBuku from "./components/axios";
 import TambahBuku from "./components/tambahbuku";
 import Notfound from "./components/notfound";
 import Updatebuku from "./components/ubahbuku";
+import RegisterUser from "./components/registeruser";
+import Login from "./components/login";
 // import Profile from "./components/profile";
 // import About from "./components/about";
 // import Validasi from "./components/challenge-validasi";
@@ -26,6 +28,8 @@ const routing = (
           <Route path="/daftarbuku" component={DaftarBuku} />
           <Route path="/tambahbuku" component={TambahBuku} />
           <Route path="/updatebuku/:id" component={Updatebuku} />
+          <Route path="/registeruser" component={RegisterUser} />
+          <Route path="/login" component={Login} />
           <Route component={Notfound} />
         </Switch>
       </Main>

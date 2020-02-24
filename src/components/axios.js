@@ -14,7 +14,7 @@ import { Form } from "reactstrap";
 //     fetchData();
 //   }, []);
 function App() {
-  const url = "http://localhost:3000/books";
+  const url = "http://localhost:6767/books";
   const [data, setData] = useState({ data: [] });
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   function onDelete(id) {
-    axios.delete(`http://localhost:3000/books/${id}`).then(alert("Terhapus"));
+    axios.delete(`http://localhost:6767/books/${id}`).then(alert("Terhapus"));
     window.location.reload(false);
   }
 
@@ -34,7 +34,7 @@ function App() {
           <td>{books.title}</td>
           <td>{books.author}</td>
           <td>{books.published_date}</td>
-          <td>{books.pages}</td>
+          <td>{books.page}</td>
           <td>{books.language}</td>
           <td>{books.publisher_id}</td>
           <td>

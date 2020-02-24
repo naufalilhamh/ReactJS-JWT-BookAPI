@@ -6,7 +6,7 @@ const TambahBuku = () => {
     title: "",
     author: "",
     published_date: "",
-    pages: "",
+    page: "",
     language: "",
     publisher_id: ""
   });
@@ -16,7 +16,7 @@ const TambahBuku = () => {
       form.title,
       form.author,
       form.published_date,
-      form.pages,
+      form.page,
       form.language,
       form.publisher_id
     );
@@ -25,11 +25,11 @@ const TambahBuku = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:3000/books", {
+      const result = await axios.post("http://localhost:6767/books", {
         title: form.title,
         author: form.author,
         published_date: form.published_date,
-        pages: form.pages,
+        page: form.page,
         language: form.language,
         publisher_id: form.publisher_id
       });
@@ -79,12 +79,12 @@ const TambahBuku = () => {
             name="published_date"
             onChange={updateField}
           />
-          <label className="labelbuku">Pages:</label>
+          <label className="labelbuku">Page:</label>
           <input
             className="form-control"
             type="number"
-            value={form.pages}
-            name="pages"
+            value={form.page}
+            name="page"
             onChange={updateField}
           />
 

@@ -38,6 +38,16 @@ const Navigation = () => {
               Update Buku
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/registeruser" tag={RRNavLink}>
+              Register
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/login" tag={RRNavLink}>
+              Login
+            </NavLink>
+          </NavItem>
 
           {/* <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
