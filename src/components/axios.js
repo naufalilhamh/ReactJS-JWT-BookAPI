@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Form } from "reactstrap";
 
 function App() {
   const url = "http://localhost:6767/books";
@@ -76,14 +75,21 @@ function App() {
     <div>
       <h1 id="title">Daftar Buku</h1>
       <div className="col-md-2">
-        <Link to="/tambahbuku">
-          <button type="button" className="btn btn-success btn-sm mb-1">
-            <i className="fa fa-plus"> </i>
-            Tambah Buku
-          </button>
-        </Link>
+        {(() => {
+          if (role === "ADMIN") {
+            return (
+              <Link to="/tambahbuku">
+                <button type="button" className="btn btn-success btn-sm mb-1">
+                  <i className="fa fa-plus"> </i>
+                  Tambah Buku
+                </button>
+              </Link>
+            );
+          } else {
+            return <></>;
+          }
+        })()}
       </div>
-      {/* <input type="text" class="search form-control" placeholder="Pencarian" /> */}
       <table id="tabelbor" className="table table-striped table-bordered">
         <thead>
           <tr>
@@ -101,14 +107,5 @@ function App() {
       </table>
     </div>
   );
-  //   return (
-  //     <ul>
-  //       {data.hits.map(item => (
-  //         <li key={item.objectID}>
-  //           <a href={item.url}>{item.title}</a> <span>{item.author}</span>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
 }
 export default App;

@@ -30,7 +30,7 @@ export default function App() {
     <div className="container">
       <div className="cardregis">
         <div className="title">Form Register User</div>
-        <form onSubmit={e => e.preventDefault()} className="px-4">
+        <form id="myForm" onSubmit={e => e.preventDefault()} className="px-4">
           <div className="form-group">
             <label className="labelbuku">Nama </label>
             <input
@@ -122,12 +122,6 @@ export default function App() {
             className="btn btn-outline-secondary btn-md mb-2"
           >
             Register
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-md mb-2"
-          >
-            Clear
           </button>
         </form>
       </div>
