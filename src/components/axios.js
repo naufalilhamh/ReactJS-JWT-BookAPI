@@ -3,19 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Form } from "reactstrap";
 
-// function App() {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios("http://localhost:3000/books");
-//       setData(result.data);
-//     };
-//     fetchData();
-//   }, []);
 function App() {
   const url = "http://localhost:6767/books";
   const [data, setData] = useState({ data: [] });
+  const role = sessionStorage.getItem("Role");
 
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
@@ -38,25 +29,44 @@ function App() {
           <td>{books.language}</td>
           <td>{books.publisher_id}</td>
           <td>
-            <Link to={"/updatebuku/" + books.id}>
-              <button
-                type="button"
-                className="btn btn-secondary btn-sm mt-1"
-                width="10px"
-              >
-                <i className="fa fa-gear"></i>
-                Edit
-              </button>
-            </Link>
+            {(() => {
+              if (role === "ADMIN") {
+                return (
+                  <>
+                    <Link to={"/updatebuku/" + books.id}>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-sm mt-1"
+                      >
+                        <i className="fa fa-gear"></i>
+                        Edit
+                      </button>
+                    </Link>
 
-            <button
-              type="button"
-              className="btn btn-danger  btn-sm mt-1"
-              onClick={() => onDelete(books.id)}
-            >
-              <i className="fa fa-trash"></i>
-              Hapus
-            </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger  btn-sm mt-1"
+                      onClick={() => onDelete(books.id)}
+                    >
+                      <i className="fa fa-trash"></i>
+                      Hapus
+                    </button>
+                  </>
+                );
+              } else {
+                return (
+                  <Link to={"/pinjambuku/" + books.id}>
+                    <button
+                      type="button"
+                      className="btn btn-success btn-sm mt-1"
+                    >
+                      <i className="fa fa-check"> </i>
+                      Pilih Buku
+                    </button>
+                  </Link>
+                );
+              }
+            })()}
           </td>
         </tr>
       );
@@ -65,6 +75,14 @@ function App() {
   return (
     <div>
       <h1 id="title">Daftar Buku</h1>
+      <div className="col-md-2">
+        <Link to="/tambahbuku">
+          <button type="button" className="btn btn-success btn-sm mb-1">
+            <i className="fa fa-plus"> </i>
+            Tambah Buku
+          </button>
+        </Link>
+      </div>
       {/* <input type="text" class="search form-control" placeholder="Pencarian" /> */}
       <table id="tabelbor" className="table table-striped table-bordered">
         <thead>

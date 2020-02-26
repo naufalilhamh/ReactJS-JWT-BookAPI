@@ -12,57 +12,79 @@ import {
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  return (
-    <Navbar color="light" light expand="md">
-      <NavbarBrand href={"/"}>Perpustakaan</NavbarBrand>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
-            <NavLink to="/daftarbuku" tag={RRNavLink}>
-              Daftar Buku
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/tambahbuku" tag={RRNavLink}>
-              Tambah Buku
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/caribuku" tag={RRNavLink}>
-              Cari Buku
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/updatebuku" tag={RRNavLink}>
-              Update Buku
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/registeruser" tag={RRNavLink}>
-              Register
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/login" tag={RRNavLink}>
-              Login
-            </NavLink>
-          </NavItem>
 
-          {/* <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Options
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
-        </Nav>
-      </Collapse>
-    </Navbar>
-  );
+  const token = sessionStorage.getItem("Token");
+  const role = sessionStorage.getItem("Role");
+
+  if (!token) {
+    return (
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href={"/"}>Perpustakaan</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink to="/login" tag={RRNavLink}>
+                Login
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  } else if (token && role === "ADMIN") {
+    return (
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href={"/"}>Perpustakaan</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink to="/daftarbuku" tag={RRNavLink}>
+                List Buku
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/listuser" tag={RRNavLink}>
+                List User
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/logout" tag={RRNavLink}>
+                Logout
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  } else if (token && role === "USER") {
+    return (
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href={"/"}>Perpustakaan</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink to="/daftarbuku" tag={RRNavLink}>
+                Pinjam Buku
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/tambahbuku" tag={RRNavLink}>
+                Daftar Pinjaman Buku
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/logout" tag={RRNavLink}>
+                Logout
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
 };
+
 export default Navigation;

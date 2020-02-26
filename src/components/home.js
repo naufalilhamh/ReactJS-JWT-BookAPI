@@ -1,16 +1,17 @@
 import React from "react";
 import Logo from "./buku.jpeg";
 import { Jumbotron } from "reactstrap";
+const role = sessionStorage.getItem("Role");
 const Home = () => {
   return (
     <Jumbotron>
       <h2>
-        Hello, Selamat Datang! <br /> Kadang Membaca Bisa Membuatmu Pintar{" "}
+        Hello, Selamat Datang! {role} <br /> Kadang Membaca Bisa Membuatmu
+        Pintar{" "}
       </h2>
-      <font>*tergantung apa yang dibaca</font>
       <p className="lead">
         <div>
-          <img src={Logo} width="1000px" height="300px" />
+          <img src={Logo} width="1200px" height="400px" />
         </div>
       </p>
       {/* <div className="p-3 my-2 rounded">

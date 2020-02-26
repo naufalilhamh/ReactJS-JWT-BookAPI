@@ -1,89 +1,136 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
-const TambahBuku = () => {
-  const [form, setValues] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    roles: []
-  });
-  const printValues = e => {
-    e.preventDefault();
-    console.log(form.name, form.username, form.email, form.password);
+// import "../../src/formcss.css";
+
+//classname="px-2"
+
+export default function App() {
+  const { register, errors, handleSubmit, watch } = useForm({});
+  const password = useRef({});
+  password.current = watch("password", "");
+
+  const onSubmit = async data => {
+    console.log(data);
+    axios
+      .post(`http://localhost:6767/register`, {
+        name: data.name,
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        roles: ["user"]
+      })
+      .then(alert("Register successful!"));
+    // document.getElementById("registerbookform").reset();
+    window.location.replace("/");
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    try {
-      const result = await axios.post("http://localhost:6767/register", {
-        name: form.name,
-        username: form.username,
-        email: form.email,
-        password: form.password,
-        roles: ["user"]
-      });
-      console.log(form.name, form.username, form.email, form.password);
-      // window.location.reload();
-      if (result.status === 201) {
-        alert("Register sucessfuly!");
-        window.location.replace("/login");
-      } else {
-        throw new Error("Failed to insert data!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const updateField = e => {
-    setValues({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
   return (
     <div className="container">
       <div className="cardregis">
         <div className="title">Form Register User</div>
-        <form onSubmit={handleSubmit} className="px-4 ma">
+        <form onSubmit={e => e.preventDefault()} className="px-4">
           <div className="form-group">
             <label className="labelbuku">Nama </label>
             <input
               className="form-control"
-              value={form.name}
+              type="text"
+              placeholder="Name"
               name="name"
-              onChange={updateField}
+              ref={register({
+                required: "Jangan Kosongkan Nama!",
+                minLength: {
+                  value: 5,
+                  message: "Minimal 5 Huruf!"
+                }
+              })}
             />
+            {errors.name && <p>{errors.name.message}</p>}
           </div>
-          <label className="labelbuku">Username </label>
-          <input
-            className="form-control"
-            value={form.username}
-            name="username"
-            onChange={updateField}
-          />
-          <label className="labelbuku">Email</label>
-          <input
-            className="form-control"
-            type="email"
-            value={form.email}
-            name="email"
-            onChange={updateField}
-          />
-          <label className="labelbuku">Password</label>
-          <input
-            className="form-control"
-            type="password"
-            value={form.password}
-            name="password"
-            onChange={updateField}
-          />
-          <br />
-          <button>Submit</button>
+          <div className="form-group">
+            <label className="labelbuku">Username</label>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Username"
+              name="username"
+              ref={register({
+                required: "Jangan Kosongkan Username!",
+                minLength: {
+                  value: 5,
+                  message: "Minimal 5 karakter!"
+                }
+              })}
+            />
+            {errors.username && <p>{errors.username.message}</p>}
+          </div>
+          <div className="form-group">
+            <label className="labelbuku">Email</label>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Email"
+              name="email"
+              ref={register({
+                required: "Jangan Kosongkan Emai!",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Bukan Email!"
+                }
+              })}
+            />
+            {errors.email && <p>{errors.email.message}</p>}
+          </div>
+
+          <div className="form-group">
+            <label className="labelbuku">Password</label>
+            <input
+              className="form-control"
+              name="password"
+              type="password"
+              ref={register({
+                required: "Jangan Kosongkan Password",
+                minLength: {
+                  value: 8,
+                  message: "Minimal 8 Digit Password"
+                }
+              })}
+            />
+            {errors.password && <p>{errors.password.message}</p>}
+          </div>
+
+          <div className="form=group">
+            <label className="labelbuku">Repeat password</label>
+            <input
+              className="form-control"
+              name="password_repeat"
+              type="password"
+              ref={register({
+                validate: value =>
+                  value === password.current || "Password Ga Sesuai"
+              })}
+            />
+            {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
+          </div>
+
+          <hr />
+
+          <button
+            type="submit"
+            onClick={handleSubmit(onSubmit)}
+            className="btn btn-outline-secondary btn-md mb-2"
+          >
+            Register
+          </button>
+          <button
+            type="button"
+            className="btn btn-outline-secondary btn-md mb-2"
+          >
+            Clear
+          </button>
         </form>
       </div>
     </div>
   );
-};
-export default TambahBuku;
+}

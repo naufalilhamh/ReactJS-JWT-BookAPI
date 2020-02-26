@@ -11,27 +11,62 @@ import TambahBuku from "./components/tambahbuku";
 import Notfound from "./components/notfound";
 import Updatebuku from "./components/ubahbuku";
 import RegisterUser from "./components/registeruser";
+import Logout from "./components/logout";
 import Login from "./components/login";
+import ListUser from "./components/listuser";
+import UpdateRole from "./components/updaterole";
 // import Profile from "./components/profile";
 // import About from "./components/about";
 // import Validasi from "./components/challenge-validasi";
 // import Form from "./validasi/FormHook";
 // import MultiHandling from "./components/multihandling";
 // import Handling from "./components/handling";
+const role = sessionStorage.getItem("Role");
 
 const routing = (
   <Router>
     <Switch>
       <Main>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/daftarbuku" component={DaftarBuku} />
-          <Route path="/tambahbuku" component={TambahBuku} />
-          <Route path="/updatebuku/:id" component={Updatebuku} />
-          <Route path="/registeruser" component={RegisterUser} />
-          <Route path="/login" component={Login} />
-          <Route component={Notfound} />
-        </Switch>
+        {(() => {
+          if (role === "ADMIN") {
+            return (
+              <>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/daftarbuku" component={DaftarBuku} />
+                  <Route path="/listuser" component={ListUser} />
+                  <Route path="/tambahbuku" component={TambahBuku} />
+                  <Route path="/updatebuku/:id" component={Updatebuku} />
+                  <Route path="/logout" component={Logout} />
+                  <Route path="/updaterole/:id" component={UpdateRole} />
+                  <Route component={Notfound} />
+                </Switch>
+              </>
+            );
+          } else if (role === "USER") {
+            return (
+              <>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/daftarbuku" component={DaftarBuku} />
+                  <Route path="/logout" component={Logout} />
+                  <Route component={Notfound} />
+                </Switch>
+              </>
+            );
+          } else {
+            return (
+              <>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/registeruser" component={RegisterUser} />
+                  <Route component={Notfound} />
+                </Switch>
+              </>
+            );
+          }
+        })()}
       </Main>
     </Switch>
   </Router>

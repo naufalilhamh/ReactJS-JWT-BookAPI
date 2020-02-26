@@ -14,22 +14,32 @@ const TambahBuku = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:6767/login", {
-        username: form.username,
-        password: form.password
-      });
-      console.log(form.username, form.password);
-      console.log(result.data.accessToken);
-      // window.location.reload();
-      if (result.status === 200) {
-        console.log(result);
-        // alert("Login Berhasil sucessfuly!");
-        // window.location.replace("/");
-      } else {
-        throw new Error("Failed to insert data!");
-      }
+      const result = await axios
+        .post("http://localhost:6767/login", {
+          username: form.username,
+          password: form.password
+        })
+        .then(res => {
+          const token = res.data.accessToken;
+          const role = res.data.Role;
+          const id_user = res.data.id_user;
+          // console.log(token);
+          sessionStorage.setItem("Token", token);
+          sessionStorage.setItem("Role", role);
+          sessionStorage.setItem("Id", id_user);
+          if (res.status === 200) {
+            console.log(res);
+            alert("Login Berhasil");
+            window.location.replace("/");
+          } else {
+            throw new Error("Username & Password Salah!");
+          }
+        });
+      //
     } catch (err) {
       console.log(err);
+      alert("Username & Password Salah, Ulangi");
+      window.location.reload();
     }
   };
   const updateField = e => {
@@ -50,6 +60,7 @@ const TambahBuku = () => {
               value={form.username}
               name="username"
               onChange={updateField}
+              required
             />
           </div>
           <label className="labelbuku">Password </label>
@@ -59,9 +70,24 @@ const TambahBuku = () => {
             value={form.password}
             name="password"
             onChange={updateField}
+            required
           />
           <br />
-          <button>Masuk</button>
+          <button
+            type="submit"
+            className="btn btn-outline-secondary btn-md mb-2"
+          >
+            Login
+          </button>
+          <br />
+          <a href="/registeruser">
+            <button
+              type="button"
+              className="btn btn-outline-secondary btn-md mb-2"
+            >
+              Register
+            </button>
+          </a>
         </form>
       </div>
     </div>
