@@ -39,7 +39,6 @@ const routing = (
                   <Route path="/daftarbuku" component={DaftarBuku} />
                   <Route path="/listuser" component={ListUser} />
                   <Route path="/detailpinjam/:id" component={DetailPinjam} />
-
                   <Route path="/tambahbuku" component={TambahBuku} />
                   <Route path="/updatebuku/:id" component={Updatebuku} />
                   <Route path="/logout" component={Logout} />
