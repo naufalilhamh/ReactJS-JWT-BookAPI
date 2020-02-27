@@ -71,7 +71,7 @@ const Navigation = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/tambahbuku" tag={RRNavLink}>
+              <NavLink to="/listpinjamid" tag={RRNavLink}>
                 Daftar Pinjaman Buku
               </NavLink>
             </NavItem>

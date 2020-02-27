@@ -11,12 +11,14 @@ function App() {
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
+  console.log(data.data);
 
   const renderTable = () => {
+    let no = 1;
     return data.data.map(user => {
       return (
         <tr key={user.id}>
-          <td>{user.id}</td>
+          <td>{no++}</td>
           <td>{user.name}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
@@ -24,30 +26,44 @@ function App() {
             {(() => {
               if (user.id == id_user) {
                 return (
-                  <Link to={"/updaterole/" + user.id}>
-                    <button
-                      type="button"
-                      className="btn btn-danger btn-sm mt-1"
-                      width="10px"
-                      disabled
-                    >
-                      <i className="fa fa-key"> </i>
-                      Edit Roles Locked
-                    </button>
-                  </Link>
+                  <>
+                    <Link to={"/updaterole/" + user.id}>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm mt-1"
+                        width="10px"
+                        disabled
+                      >
+                        <i className="fa fa-key"> </i>
+                        Edit Roles Locked
+                      </button>
+                    </Link>
+                  </>
                 );
               } else {
                 return (
-                  <Link to={"/updaterole/" + user.id}>
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-sm mt-1"
-                      width="10px"
-                    >
-                      <i className="fa fa-gear"> </i>
-                      Edit Roles
-                    </button>
-                  </Link>
+                  <>
+                    <Link to={"/updaterole/" + user.id}>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-sm mt-1"
+                        width="10px"
+                      >
+                        <i className="fa fa-gear"> </i>
+                        Edit Roles
+                      </button>
+                    </Link>
+                    <Link to={"/detailpinjam/" + user.id}>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm mt-1"
+                        width="10px"
+                      >
+                        <i className="fa fa-eye"> </i>
+                        Lihat Peminjaman
+                      </button>
+                    </Link>
+                  </>
                 );
               }
             })()}
@@ -63,7 +79,7 @@ function App() {
       <table id="tabelbor" className="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>ID </th>
+            <th>No </th>
             <th>Nama</th>
             <th>Username</th>
             <th>Email</th>
@@ -74,14 +90,5 @@ function App() {
       </table>
     </div>
   );
-  //   return (
-  //     <ul>
-  //       {data.hits.map(item => (
-  //         <li key={item.objectID}>
-  //           <a href={item.url}>{item.title}</a> <span>{item.author}</span>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
 }
 export default App;

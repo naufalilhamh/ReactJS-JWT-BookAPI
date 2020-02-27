@@ -6,7 +6,6 @@ function App() {
   const url = "http://localhost:6767/books";
   const [data, setData] = useState({ data: [] });
   const role = sessionStorage.getItem("Role");
-
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
@@ -14,6 +13,15 @@ function App() {
   function onDelete(id) {
     axios.delete(`http://localhost:6767/books/${id}`).then(alert("Terhapus"));
     window.location.reload(false);
+  }
+  function pinjambuku(id_buku) {
+    const id_user = sessionStorage.getItem("Id");
+    axios
+      .post("http://localhost:6767/orders/" + id_buku + "/" + id_user)
+      .then(alert("Peminjaman Berhasil Ditambahkan"));
+    window.location.replace("/listpinjamid");
+    console.log(id_buku);
+    console.log(id_user);
   }
 
   const renderTable = () => {
@@ -54,15 +62,14 @@ function App() {
                 );
               } else {
                 return (
-                  <Link to={"/pinjambuku/" + books.id}>
-                    <button
-                      type="button"
-                      className="btn btn-success btn-sm mt-1"
-                    >
-                      <i className="fa fa-check"> </i>
-                      Pilih Buku
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn btn-success btn-sm mt-1"
+                    onClick={() => pinjambuku(books.id)}
+                  >
+                    <i className="fa fa-check"> </i>
+                    Pilih Buku
+                  </button>
                 );
               }
             })()}

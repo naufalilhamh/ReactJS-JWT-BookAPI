@@ -15,6 +15,9 @@ import Logout from "./components/logout";
 import Login from "./components/login";
 import ListUser from "./components/listuser";
 import UpdateRole from "./components/updaterole";
+import PinjamBuku from "./components/pinjambuku";
+import ListPinjamPerID from "./components/listpinjam";
+import DetailPinjam from "./components/detailpinjam";
 // import Profile from "./components/profile";
 // import About from "./components/about";
 // import Validasi from "./components/challenge-validasi";
@@ -35,6 +38,8 @@ const routing = (
                   <Route exact path="/" component={Home} />
                   <Route path="/daftarbuku" component={DaftarBuku} />
                   <Route path="/listuser" component={ListUser} />
+                  <Route path="/detailpinjam/:id" component={DetailPinjam} />
+
                   <Route path="/tambahbuku" component={TambahBuku} />
                   <Route path="/updatebuku/:id" component={Updatebuku} />
                   <Route path="/logout" component={Logout} />
@@ -49,6 +54,8 @@ const routing = (
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route path="/daftarbuku" component={DaftarBuku} />
+                  <Route path="/listpinjamid" component={ListPinjamPerID} />
+                  <Route path="/pinjambuku/:id_buku" component={PinjamBuku} />
                   <Route path="/logout" component={Logout} />
                   <Route component={Notfound} />
                 </Switch>
